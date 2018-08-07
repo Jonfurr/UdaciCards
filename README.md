@@ -16,3 +16,6 @@ This project was bootstrapped with [Create React Native App](https://github.com/
 3. Type `a` to run the android simulator
 
 The app has been tested in iOs and Android
+
+
+Thanks to https://github.com/santbob/UdaciCards for some guidance through some sticky parts.
