@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "sdkVersion": "27.0.0",
+    "orientation": "portrait",
+    "name": "UdaciCards",
+    "description": "FlashCard app for studying",
+    "slug": "udacitycards",
+    "version": "1.0",
+    "ios": {
+     "bundleIdentifier": "com.jonfurr.udacicards",
+    },
+    "android": {
+     "package": "com.jonfurr.udacicards",
+    }
+  }
+}
