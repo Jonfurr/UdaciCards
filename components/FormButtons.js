@@ -1,10 +1,10 @@
-import React, {PureComponent} from 'react'
-import {Text, View, TouchableOpacity, StyleSheet, Platform} from 'react-native'
-import {white, blue, lightGray} from '../utils/colors'
+import React, { PureComponent } from 'react'
+import { Text, View, TouchableOpacity, StyleSheet, Platform } from 'react-native'
+import { white, blue, lightGray } from '../utils/colors'
 
 class FormButtons extends PureComponent {
   render() {
-    const {onSubmit, onCancel} = this.props
+    const { onSubmit, onCancel } = this.props
     return (
       <View style={styles.row}>
         <TouchableOpacity style={[styles.btn, styles.cancelBtn]} onPress={onCancel}>

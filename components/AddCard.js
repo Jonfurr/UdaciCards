@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import {
   Text,
   TextInput,
@@ -8,43 +8,43 @@ import {
   StyleSheet
 } from 'react-native'
 
-import {connect} from 'react-redux'
-import {black, white, lightGray, blue} from '../utils/colors'
+import { connect } from 'react-redux'
+import { black, white, lightGray, blue } from '../utils/colors'
 
 import FormButtons from './FormButtons'
-import {NavigationActions} from 'react-navigation'
+import { NavigationActions } from 'react-navigation'
 
-import {addCardToDeck} from '../utils/helpers'
-import {addCard} from '../actions'
+import { addCardToDeck } from '../utils/helpers'
+import { addCard } from '../actions'
 
 class AddCard extends Component {
 
   submit = () => {
-    const {question, answer} = this.state
-    const {addCard, deck, goBack} = this.props
+    const { question, answer } = this.state
+    const { addCard, deck, goBack } = this.props
     if (question !== null && answer !== null) {
-      addCard(deck.title, {question, answer}) //update Redux
-      addCardToDeck(deck.title, {question, answer}) //update db
+      addCard(deck.title, { question, answer }) //update Redux
+      addCardToDeck(deck.title, { question, answer }) //update db
       goBack()
     }
-     else {
+    else {
       alert('Please enter a question and answer and try again.')
-     }
+    }
   }
 
   reset = () => {
-    this.setState({question: '', answer: ''})
+    this.setState({ question: '', answer: '' })
     this.props.goBack()
   }
 
   render() {
-    const {deck} = this.props
+    const { deck } = this.props
     return (
       <View style={styles.container}>
         <Text style={styles.title}>{deck.title}</Text>
-        <TextInput style={styles.question} underlineColorAndroid={'transparent'} editable={true} maxLength={100} placeholder="Enter the question here" onChangeText={(question) => this.setState({question})}/>
-        <TextInput style={styles.answer} underlineColorAndroid={'transparent'} editable={true} maxLength={200} multiline={true} placeholder="Enter the answer here" onChangeText={(answer) => this.setState({answer})}/>
-        <FormButtons onSubmit={this.submit} onCancel={this.reset} submitBtnText={'Add Card'}/>
+        <TextInput style={styles.question} underlineColorAndroid={'transparent'} editable={true} maxLength={100} placeholder="Enter the question here" onChangeText={(question) => this.setState({ question })} />
+        <TextInput style={styles.answer} underlineColorAndroid={'transparent'} editable={true} maxLength={200} multiline={true} placeholder="Enter the answer here" onChangeText={(answer) => this.setState({ answer })} />
+        <FormButtons onSubmit={this.submit} onCancel={this.reset} submitBtnText={'Add Card'} />
       </View>
     )
   }
@@ -84,15 +84,15 @@ const styles = StyleSheet.create({
   }
 })
 
-function mapStateToProps(decks, {navigation}) {
-  const {deckTitle} = navigation.state.params
+function mapStateToProps(decks, { navigation }) {
+  const { deckTitle } = navigation.state.params
   return {
     deck: decks[deckTitle] || {}
   }
 }
 
-function mapDispatchToProps(dispatch, {navigation}) {
-  const {deckTitle} = navigation.state.params
+function mapDispatchToProps(dispatch, { navigation }) {
+  const { deckTitle } = navigation.state.params
 
   return {
     goBack: () => navigation.goBack(),

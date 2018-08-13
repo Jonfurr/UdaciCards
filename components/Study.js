@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import {
   View,
   Text,
@@ -6,9 +6,9 @@ import {
   TouchableOpacity,
   Platform
 } from 'react-native'
-import {connect} from 'react-redux'
-import {setLocalNotification, clearLocalNotification} from '../utils/notifications'
-import {white, blue, darkGray} from '../utils/colors'
+import { connect } from 'react-redux'
+import { setLocalNotification, clearLocalNotification } from '../utils/notifications'
+import { white, blue, darkGray } from '../utils/colors'
 import Card from './Card'
 
 class Study extends Component {
@@ -41,13 +41,13 @@ class Study extends Component {
   }
 
   reset() {
-    this.setState({currentQuestion: 0, correctAnswers: 0})
+    this.setState({ currentQuestion: 0, correctAnswers: 0 })
   }
 
   render() {
-    const {currentQuestion, correctAnswers} = this.state
-    const {deck, goBack} = this.props
-    const {questions} = deck
+    const { currentQuestion, correctAnswers } = this.state
+    const { deck, goBack } = this.props
+    const { questions } = deck
 
     if (currentQuestion > 0 && currentQuestion === questions.length) {
       return (
@@ -71,7 +71,7 @@ class Study extends Component {
     }
 
     const card = questions[currentQuestion]
-    const {opacityFront, opacityBack, transformFrontY, transformBackY} = this.state
+    const { opacityFront, opacityBack, transformFrontY, transformBackY } = this.state
     const frontAnimatedStyle = {
       transform: [
         {
@@ -92,7 +92,7 @@ class Study extends Component {
           <Text style={styles.pagination}>{currentQuestion + 1} / {questions.length}</Text>
         </View>
         <View style={styles.container}>
-          <View style={styles.card}><Card card={card}/></View>
+          <View style={styles.card}><Card card={card} /></View>
           <View style={styles.btnContainer}>
             <TouchableOpacity style={styles.btn} onPress={() => this.correctBtnPressed()}>
               <Text style={styles.btnText}>Correct</Text>
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
       }
     })
   },
-  
+
   btnText: {
     color: white,
     fontSize: 22,
@@ -161,15 +161,15 @@ const styles = StyleSheet.create({
   }
 })
 
-function mapStateToProps(decks, {navigation}) {
-  const {deckTitle} = navigation.state.params
+function mapStateToProps(decks, { navigation }) {
+  const { deckTitle } = navigation.state.params
   return {
     deck: decks[deckTitle] || {}
   }
 }
 
-function mapDispatchToProps(dispatch, {navigation}) {
-  const {deckTitle} = navigation.state.params
+function mapDispatchToProps(dispatch, { navigation }) {
+  const { deckTitle } = navigation.state.params
 
   return {
     goBack: () => navigation.goBack()

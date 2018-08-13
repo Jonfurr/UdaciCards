@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react'
+import React, { PureComponent } from 'react'
 import { Text, TouchableOpacity, StyleSheet } from 'react-native'
 
 class TextButton extends PureComponent {

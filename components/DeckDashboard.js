@@ -1,17 +1,17 @@
-import React, {Component} from 'react'
-import {View, Text, StyleSheet, TouchableOpacity, Platform} from 'react-native'
-import {connect} from 'react-redux'
-import {white, black, blue} from '../utils/colors'
+import React, { Component } from 'react'
+import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native'
+import { connect } from 'react-redux'
+import { white, black, blue } from '../utils/colors'
 import Deck from './Deck'
 
 class DeckDashboard extends Component {
-  static navigationOptions = ({navigation}) => {
-    const {deckTitle} = navigation.state.params
-    return {title: deckTitle}
+  static navigationOptions = ({ navigation }) => {
+    const { deckTitle } = navigation.state.params
+    return { title: deckTitle }
   }
 
   render() {
-    const {deck, navigateToAddCard, navigateToStartStudy} = this.props
+    const { deck, navigateToAddCard, navigateToStartStudy } = this.props
 
     return (
       <View style={styles.container}>
@@ -23,7 +23,7 @@ class DeckDashboard extends Component {
           <TouchableOpacity style={styles.btn} onPress={() => navigateToStartStudy(deck.title)}>
             <Text style={styles.btnText}>Study</Text>
           </TouchableOpacity>
-          </View>
+        </View>
       </View>
     )
   }
@@ -67,21 +67,21 @@ const styles = StyleSheet.create({
 
 })
 
-function mapStateToProps(decks, {navigation}) {
-  const {deckTitle} = navigation.state.params
+function mapStateToProps(decks, { navigation }) {
+  const { deckTitle } = navigation.state.params
   return {
     deck: decks[deckTitle] || {},
     decks
   }
 }
 
-function mapDispatchToProps(dispatch, {navigation}) {
-  const {deckTitle} = navigation.state.params
+function mapDispatchToProps(dispatch, { navigation }) {
+  const { deckTitle } = navigation.state.params
 
   return {
     goBack: () => navigation.goBack(),
-    navigateToAddCard: (deckTitle) => navigation.navigate('AddCard', {deckTitle: deckTitle}),
-    navigateToStartStudy: (deckTitle) => navigation.navigate('Study', {deckTitle: deckTitle})
+    navigateToAddCard: (deckTitle) => navigation.navigate('AddCard', { deckTitle: deckTitle }),
+    navigateToStartStudy: (deckTitle) => navigation.navigate('Study', { deckTitle: deckTitle })
   }
 
 }

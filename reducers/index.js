@@ -1,4 +1,4 @@
-import {FETCH_DECKS, ADD_DECK, ADD_CARD} from '../actions'
+import { FETCH_DECKS, ADD_DECK, ADD_CARD } from '../actions'
 
 function decks(state = {}, action) {
   switch (action.type) {
@@ -13,14 +13,14 @@ function decks(state = {}, action) {
 
     case ADD_DECK:
       {
-        const o = {
+        const deckData = {
           ...state,
           [action.deckTitle]: {
             title: action.deckTitle,
             questions: []
           }
         }
-        return o
+        return deckData
         break;
       }
 
@@ -30,8 +30,8 @@ function decks(state = {}, action) {
           ...state
         }
         if (out[action.deckTitle]) {
-          const {question, answer} = action.card
-          out[action.deckTitle].questions.push({question, answer})
+          const { question, answer } = action.card
+          out[action.deckTitle].questions.push({ question, answer })
         }
         return out
         break;

@@ -7,83 +7,83 @@ import AddDeck from '../components/AddDeck'
 import DeckDashboard from '../components/DeckDashboard'
 import Study from '../components/Study'
 import { MaterialIcons, Entypo } from '@expo/vector-icons'
-import {darkGray, gray, white, black, orange, lightGray, blue} from './colors'
+import { darkGray, gray, white, black, orange, lightGray, blue } from './colors'
 
 const Tabs = createBottomTabNavigator({
-  Decks:{
+  Decks: {
     screen: Decks,
     navigationOptions: {
       tabBarLabel: 'Decks',
-      tabBarIcon: ({tintColor}) => <Entypo name='documents' size={25} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Entypo name='documents' size={25} color={tintColor} />
     }
   },
   AddDeck: {
     screen: AddDeck,
     navigationOptions: {
       tabBarLabel: 'Add Deck',
-      tabBarIcon: ({tintColor}) => <Entypo name='circle-with-plus' size={25} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Entypo name='circle-with-plus' size={25} color={tintColor} />
     }
   }
 }, {
-  navigationOptions: {
-    header: <Text>UdaciCards</Text>,
-    headerTitleStyle: {
-      fontWeight: "bold",
-      color: white,
+    navigationOptions: {
+      header: <Text>UdaciCards</Text>,
+      headerTitleStyle: {
+        fontWeight: "bold",
+        color: white,
+      },
+      headerTintColor: white
     },
-    headerTintColor: white
-  },
-  tabBarOptions:{
-    shifting: true,
-    activeTintColor: white,
-    inactiveTintColor: gray,
-    style: {
-      height: 60,
-      backgroundColor: blue,
-   }
-  }
-})
+    tabBarOptions: {
+      shifting: true,
+      activeTintColor: white,
+      inactiveTintColor: gray,
+      style: {
+        height: 60,
+        backgroundColor: blue,
+      }
+    }
+  })
 
 
 
 const AndroidTabs = createMaterialTopTabNavigator({
-  Decks:{
+  Decks: {
     screen: Decks,
     navigationOptions: {
       tabBarLabel: <Text style={{ fontSize: 18, color: white }}> Decks </Text>,
-      tabBarIcon: ({tintColor, focused}) => <Entypo name='documents' color={focused ? white : darkGray} size={12} />
+      tabBarIcon: ({ tintColor, focused }) => <Entypo name='documents' color={focused ? white : darkGray} size={12} />
     }
   },
   AddDeck: {
     screen: AddDeck,
     navigationOptions: {
       tabBarLabel: <Text style={{ fontSize: 18, color: white }}>Add Deck</Text>,
-      tabBarIcon: ({tintColor, focused}) => <MaterialIcons name='add-circle-outline' color={focused ? white : darkGray} size={12} />
+      tabBarIcon: ({ tintColor, focused }) => <MaterialIcons name='add-circle-outline' color={focused ? white : darkGray} size={12} />
     }
   }
-},{
-  initialRouteName: 'Decks',
-  activeTintColor: white,
-  inactiveTintColor: gray,
-  tabBarOptions: {
-    labelStyle: {
-      fontSize: 22,
-      color: white,
-      fontWeight: 'bold'
-    },
-    style: {
-      backgroundColor: blue
-    },
-  }
-});
+}, {
+    initialRouteName: 'Decks',
+    activeTintColor: white,
+    inactiveTintColor: gray,
+    tabBarOptions: {
+      labelStyle: {
+        fontSize: 22,
+        color: white,
+        fontWeight: 'bold'
+      },
+      style: {
+        backgroundColor: blue
+      },
+    }
+  });
 
 export const MainNavigator = createStackNavigator({
-  Home:{
+  Home: {
     screen: Platform.OS === 'ios' ? Tabs : AndroidTabs,
-    navigationOptions:{
+    navigationOptions: {
       title: 'UdaciCards',
       headerTintColor: white,
-      headerStyle:{
+      headerStyle: {
         backgroundColor: blue
       },
       headerTitleStyle: {
@@ -92,12 +92,12 @@ export const MainNavigator = createStackNavigator({
       },
     }
   },
-  DeckDashboard:{
+  DeckDashboard: {
     screen: DeckDashboard,
-    navigationOptions:{
+    navigationOptions: {
       title: 'Decks',
       headerTintColor: white,
-      headerStyle:{
+      headerStyle: {
         backgroundColor: blue
       },
       headerTitleStyle: {
@@ -106,26 +106,26 @@ export const MainNavigator = createStackNavigator({
       },
     }
   },
-  AddCard:{
+  AddCard: {
     screen: AddCard,
-    navigationOptions:{
+    navigationOptions: {
       headerTintColor: white,
-      headerStyle:{
+      headerStyle: {
         backgroundColor: blue
       },
       headerTitleStyle: {
         fontWeight: 'bold',
-        fontSize:28
+        fontSize: 28
       },
       headerBackTitle: "New Card",
       title: "New Card"
     }
   },
-  Study:{
+  Study: {
     screen: Study,
-    navigationOptions:{
+    navigationOptions: {
       headerTintColor: white,
-      headerStyle:{
+      headerStyle: {
         backgroundColor: blue
       },
       headerTitleStyle: {

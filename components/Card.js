@@ -12,7 +12,7 @@ class Card extends Component {
 
     return (
       <View style={[styles.container]}>
-        
+
         <FlipCard
           style={styles.card}
           friction={6}
@@ -50,13 +50,13 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     minWidth: '85%',
     minHeight: 150,
-    padding:20,
+    padding: 20,
     margin: 20
   },
   front: {
     alignSelf: 'center'
   },
-  back: {alignSelf: 'center'},
+  back: { alignSelf: 'center' },
 
   content: {
     color: black,
