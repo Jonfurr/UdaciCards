@@ -18,11 +18,20 @@ import { addCardToDeck } from '../utils/helpers'
 import { addCard } from '../actions'
 
 class AddCard extends Component {
+  static navigationOptions = ({ navigation }) => {
+    const { deckTitle } = navigation.state.params
+    return { title: deckTitle }
+  }
+  
+  state = {
+    question: '',
+    answer: ''
+  }
 
   submit = () => {
     const { question, answer } = this.state
     const { addCard, deck, goBack } = this.props
-    if (question !== null && answer !== null) {
+    if (question.length > 0 && answer.length > 0) {
       addCard(deck.title, { question, answer }) //update Redux
       addCardToDeck(deck.title, { question, answer }) //update db
       goBack()
@@ -38,7 +47,9 @@ class AddCard extends Component {
   }
 
   render() {
+    
     const { deck } = this.props
+    const { question, answer } = this.state
     return (
       <View style={styles.container}>
         <Text style={styles.title}>{deck.title}</Text>

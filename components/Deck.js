@@ -4,7 +4,7 @@ import { black, gray, blue } from '../utils/colors'
 
 class Deck extends Component {
   render() {
-    const { title, questions, bigFonts } = this.props;
+    const { title, questions } = this.props;
     return (
       <View style={styles.container}>
         <Text style={styles.title}>{title}</Text>

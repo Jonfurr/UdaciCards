@@ -5,10 +5,6 @@ import { white, black, blue } from '../utils/colors'
 import Deck from './Deck'
 
 class DeckDashboard extends Component {
-  static navigationOptions = ({ navigation }) => {
-    const { deckTitle } = navigation.state.params
-    return { title: deckTitle }
-  }
 
   render() {
     const { deck, navigateToAddCard, navigateToStartStudy } = this.props
@@ -20,7 +16,7 @@ class DeckDashboard extends Component {
           <TouchableOpacity style={styles.btn} onPress={() => navigateToAddCard(deck.title)}>
             <Text style={styles.btnText}>New Card</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.btn} onPress={() => navigateToStartStudy(deck.title)}>
+          <TouchableOpacity disabled={deck.questions.length > 0 ? false : true} style={styles.btn} onPress={() => navigateToStartStudy(deck.title)}>
             <Text style={styles.btnText}>Study</Text>
           </TouchableOpacity>
         </View>
