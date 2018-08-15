@@ -24,7 +24,7 @@ class AddDeck extends Component {
 
   reset = () => {
     this.setState({title: ""})
-    this.toHome()
+    this.props.goBack()
   }
 
   toNewDeck(title) {
@@ -85,13 +85,6 @@ const styles = StyleSheet.create({
 })
 
 
-function mapStateToProps(decks, {navigation}) {
-  // const {deckTitle} = navigation.state.params
-  return {
-    deck: {}
-  }
-}
-
 function mapDispatchToProps(dispatch, {navigation}) {
   // const {deckTitle} = navigation.state.params
 
@@ -101,4 +94,4 @@ function mapDispatchToProps(dispatch, {navigation}) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddDeck)
+export default connect(null, mapDispatchToProps)(AddDeck)
